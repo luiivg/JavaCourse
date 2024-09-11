@@ -17,14 +17,14 @@ public class Vector {
         System.out.println("The vector of size " + vector.length);
 
         //Mostramos el valor que tiene cada posicion del vector
-        for (int i = 0; i < vector.length; i++) {
-            System.out.print(vector[i] + " ");
+        for (int k : vector) {
+            System.out.print(k + " ");
         }
 
         int[] result = vectorSort(vector);
-        System.out.println("\nvector ordenado");
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i] + " ");
+        System.out.println("\nVECTOR ORDENADO");
+        for (int j : result) {
+            System.out.print(j + " ");
         }
    }
 
