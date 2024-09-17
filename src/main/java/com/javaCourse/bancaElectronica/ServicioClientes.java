@@ -7,7 +7,7 @@ public interface ServicioClientes {
     public boolean eliminarCliente(int numeroIdentificacion);
     public Cliente consultarCliente(int numeroIdentifia);
     public ArrayList<Cliente> obtenerClientes();
-    public Cliente bucarClientePorRFC(String rfc);
+    public Cliente buscarClientePorRFC(String rfc);
 
 
 }
