@@ -2,7 +2,7 @@ package com.javaCourse.bancaElectronica;
 
 import java.util.ArrayList;
 
-public class Banco {
+public class Banco implements ServicioClientes{
 
     private String nombre;
     private Domicilio domicilio;
@@ -66,5 +66,30 @@ public class Banco {
                 ", telefono='" + telefono + '\'' +
                 ", clientes=" + clientes +
                 '}';
+    }
+
+    @Override
+    public boolean agregarCliente(Cliente cliente) {
+        return false;
+    }
+
+    @Override
+    public boolean eliminarCliente(int numero) {
+        return false;
+    }
+
+    @Override
+    public Cliente consultarCliente(int numero) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Cliente> obtenerClientes() {
+        return null;
+    }
+
+    @Override
+    public Cliente bucarClientePorRFC(String rfc) {
+        return null;
     }
 }

@@ -2,7 +2,7 @@ package com.javaCourse.bancaElectronica;
 
 import java.util.ArrayList;
 
-public class Cliente {
+public class Cliente implements ServicioCuentas{
 
     private int numero;
     private String nombre;
@@ -78,8 +78,30 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public void agregarCuenta(Cuenta cuenta) {
-        cuentas.add(cuenta);
+
+    @Override
+    public boolean agregarCuenta(Cuenta cuenta) {
+        return false;
+    }
+
+    @Override
+    public boolean cancelarCuenta(int numero) {
+        return false;
+    }
+
+    @Override
+    public void abonarCuenta(int numero, double abono) {
+
+    }
+
+    @Override
+    public void retirar(int numero, double retiro) {
+
+    }
+
+    @Override
+    public ArrayList<Cuenta> obetenerCuentas() {
+        return null;
     }
 
     @Override
@@ -94,4 +116,5 @@ public class Cliente {
                 ", fechaNacimiento='" + fechaNacimiento + '\'' +
                 '}';
     }
+
 }
