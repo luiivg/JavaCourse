@@ -18,6 +18,7 @@ public class Cliente {
         this.domicilio = domicilio;
         this.rfc = rfc;
         this.telefono = telefono;
+        this.cuentas = new ArrayList<>();
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -75,6 +76,10 @@ public class Cliente {
 
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public void agregarCuenta(Cuenta cuenta) {
+        cuentas.add(cuenta);
     }
 
     @Override
