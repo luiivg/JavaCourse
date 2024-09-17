@@ -12,7 +12,7 @@ public class Cliente {
     private ArrayList<Cuenta> cuentas;
     private String fechaNacimiento;
 
-    public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono, String fechaNacimiento) {
+    public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono,  String fechaNacimiento) {
         this.numero = numero;
         this.nombre = nombre;
         this.domicilio = domicilio;
