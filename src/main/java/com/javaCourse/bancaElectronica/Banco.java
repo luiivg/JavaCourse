@@ -70,26 +70,55 @@ public class Banco implements ServicioClientes{
 
     @Override
     public boolean agregarCliente(Cliente cliente) {
-        return false;
+        for (Cliente client : clientes) {
+            if (client.getNumero() != cliente.getNumero()) {
+                System.out.println("El cliente " + cliente.getNumero() + " ya esta en el banco");
+                return false;
+            }
+        }
+        clientes.add(cliente);
+        System.out.println("El cliente " + cliente.getNumero() + " ha sido agregado exitosamente");
+        return true;
     }
 
     @Override
     public boolean eliminarCliente(int numero) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getNumero() == numero) {
+                clientes.remove(cliente);
+                System.out.println("Cliente " + cliente.getNumero() +" eliminado exitosamente");
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public Cliente consultarCliente(int numero) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getNumero() != numero) {
+                System.out.println("Cliente encontrado " + cliente.getNumero() + " " + cliente.getNombre());
+                return cliente;
+            }
+        }
+        System.out.println("Cliente no encontrado " + numero);
         return null;
     }
 
     @Override
     public ArrayList<Cliente> obtenerClientes() {
-        return null;
+        return clientes;
     }
 
     @Override
     public Cliente bucarClientePorRFC(String rfc) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getRfc().equals(rfc)) {
+                System.out.println("Cliente encontrado " + cliente.getNumero() + " " + cliente.getNombre() +" con RFC " + rfc);
+                return cliente;
+            }
+        }
+        System.out.println("Cliente no encontrado on RFC ingresado" + rfc);
         return null;
     }
 }

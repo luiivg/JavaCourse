@@ -1,6 +1,7 @@
 package com.javaCourse.bancaElectronica;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Cliente implements ServicioCuentas{
 
@@ -81,27 +82,60 @@ public class Cliente implements ServicioCuentas{
 
     @Override
     public boolean agregarCuenta(Cuenta cuenta) {
+        cuentas.add(cuenta);
+        System.out.println("Cuenta Agregada: " + cuenta.getNumero());
+        return true;
+    }
+
+    @Override
+    public boolean cancelarCuenta(int numeroCuenta) {
+        for (Cuenta cuenta: cuentas){
+            if (cuenta.getNumero() == numeroCuenta){
+                cuenta.setFechaCancelacion(new Date().toString());
+                System.out.println("Cuenta Cancelada: " + cuenta.getNumero());
+                return true;
+            }
+            System.out.println("Cuenta Inexistente: " + cuenta.getNumero());
+            return false;
+        }
+        System.out.println("No existen cuentas");
         return false;
     }
 
     @Override
-    public boolean cancelarCuenta(int numero) {
-        return false;
+    public void abonarCuenta(int numeroCuenta, double abono) {
+        for (Cuenta cuenta: cuentas){
+            if (cuenta.getNumero() == numeroCuenta){
+                cuenta.setSaldo(cuenta.getSaldo() + abono);
+                System.out.println("Se realizó un abono a la cuenta: " + cuenta.getNumero() + " por un monto de: "+ abono +
+                        " \n su saldo actual es: " + cuenta.getSaldo());
+            }
+        }
+        System.out.println("Cuenta Inexistente: " + numeroCuenta);
     }
 
     @Override
-    public void abonarCuenta(int numero, double abono) {
+    public void retirar(int numeroCuenta, double retiro) {
+        for (Cuenta cuenta: cuentas){
+            if (cuenta.getNumero() == numeroCuenta){
+                if (cuenta.getSaldo() >= retiro){
+                    cuenta.setSaldo(cuenta.getSaldo() - retiro);
+                    System.out.println("Se realizó un retiro de la cuenta: " + cuenta.getNumero() +
+                            " por un monto de: "+ retiro + "\n su saldo actual es: " + cuenta.getSaldo());
 
-    }
-
-    @Override
-    public void retirar(int numero, double retiro) {
+                }else{
+                    System.out.println("No cuenta con saldo suficiente para hacer el retiro en la cuenta : " + numeroCuenta);
+                }
+            }
+            System.out.println("Cuenta Inexistente: " + numeroCuenta);
+        }
+        System.out.println("no existen cuentas");
 
     }
 
     @Override
     public ArrayList<Cuenta> obetenerCuentas() {
-        return null;
+       return cuentas;
     }
 
     @Override
