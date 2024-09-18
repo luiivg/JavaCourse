@@ -3,7 +3,8 @@ package com.javaCourse.bancaElectronica;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Cliente implements ServicioCuentas{
+public class Cliente implements ServicioCuentas, Comparable<Cliente>{
+
 
     private int numero;
     private String nombre;
@@ -159,6 +160,11 @@ public class Cliente implements ServicioCuentas{
             System.out.println("No hay Cuentas");
             return null;
         }
+    }
+
+    @Override
+    public int compareTo(Cliente cliente) {
+        return Integer.compare(cliente.getNumero(), this.getNumero());
     }
 
     @Override
