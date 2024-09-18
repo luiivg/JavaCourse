@@ -82,6 +82,12 @@ public class Cliente implements ServicioCuentas{
 
     @Override
     public boolean agregarCuenta(Cuenta cuenta) {
+        for (Cuenta c : cuentas) {
+            if (c.getNumero() == cuenta.getNumero()) {
+                System.out.println(cuenta.getNumero() + " Cuenta ya existe");
+                return false;
+            }
+        }
         cuentas.add(cuenta);
         System.out.println("Cuenta Agregada: " + cuenta.getNumero());
         return true;
@@ -89,53 +95,70 @@ public class Cliente implements ServicioCuentas{
 
     @Override
     public boolean cancelarCuenta(int numeroCuenta) {
-        for (Cuenta cuenta: cuentas){
+        for (Cuenta cuenta: this.cuentas){
             if (cuenta.getNumero() == numeroCuenta){
                 cuenta.setFechaCancelacion(new Date().toString());
-                System.out.println("Cuenta Cancelada: " + cuenta.getNumero());
+                System.out.println("Cuenta Cancelada: " + cuenta.getNumero() + " con fecha de cancelacion " +
+                        cuenta.getFechaCancelacion());
                 return true;
             }
-            System.out.println("Cuenta Inexistente: " + cuenta.getNumero());
-            return false;
         }
-        System.out.println("No existen cuentas");
+        System.out.println("No se encontro la cuenta: " + numeroCuenta);
         return false;
     }
 
     @Override
     public void abonarCuenta(int numeroCuenta, double abono) {
+        boolean abonado = false;
         for (Cuenta cuenta: cuentas){
-            if (cuenta.getNumero() == numeroCuenta){
+            if (cuenta.getNumero() == numeroCuenta) {
                 cuenta.setSaldo(cuenta.getSaldo() + abono);
                 System.out.println("Se realizó un abono a la cuenta: " + cuenta.getNumero() + " por un monto de: "+ abono +
-                        " \n su saldo actual es: " + cuenta.getSaldo());
+                        "  su saldo actual es: " + cuenta.getSaldo());
+                abonado =true;
             }
         }
-        System.out.println("Cuenta Inexistente: " + numeroCuenta);
+        if(!abonado) {
+            System.out.println("No se encontro la cuenta: " + numeroCuenta);
+        }
     }
 
     @Override
     public void retirar(int numeroCuenta, double retiro) {
+        boolean cuentaEncontrada = false;
         for (Cuenta cuenta: cuentas){
             if (cuenta.getNumero() == numeroCuenta){
                 if (cuenta.getSaldo() >= retiro){
                     cuenta.setSaldo(cuenta.getSaldo() - retiro);
                     System.out.println("Se realizó un retiro de la cuenta: " + cuenta.getNumero() +
-                            " por un monto de: "+ retiro + "\n su saldo actual es: " + cuenta.getSaldo());
-
+                            " por un monto de: "+ retiro + " su saldo actual es: " + cuenta.getSaldo());
+                    cuentaEncontrada = true;
                 }else{
-                    System.out.println("No cuenta con saldo suficiente para hacer el retiro en la cuenta : " + numeroCuenta);
+                    System.out.println("No cuenta con saldo suficiente para hacer el retiro de: " + retiro +
+                            " en la cuenta : " + numeroCuenta);
+                    cuentaEncontrada = true;
                 }
             }
-            System.out.println("Cuenta Inexistente: " + numeroCuenta);
         }
-        System.out.println("no existen cuentas");
-
+        if(!cuentaEncontrada) {
+            System.out.println("No se encontro la cuenta: " + numeroCuenta);
+        }
     }
 
     @Override
     public ArrayList<Cuenta> obetenerCuentas() {
-       return cuentas;
+        System.out.println("LISTA DE CUENTAS:");
+        if (cuentas != null && cuentas.size()>0) {
+            for(Cuenta cuenta : cuentas) {
+                System.out.println("Numero de cuenta: " + cuenta.getNumero() + " | Fecha de apertura: " +
+                        cuenta.getFechaApertura() + " | Fecha de cancelación " + cuenta.getFechaCancelacion() +
+                        " | Saldo: " + cuenta.getSaldo());
+            }
+            return cuentas;
+        }else {
+            System.out.println("No hay Cuentas");
+            return null;
+        }
     }
 
     @Override
