@@ -2,6 +2,7 @@ package com.javaCourse.bancaElectronica;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Cliente implements ServicioCuentas, Comparable<Cliente>{
 
@@ -11,7 +12,7 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
     private Domicilio domicilio;
     private String rfc;
     private String telefono;
-    private ArrayList<Cuenta> cuentas;
+    private List<Cuenta> cuentas;
     private String fechaNacimiento;
 
     public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono,  String fechaNacimiento) {
@@ -64,7 +65,7 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
         this.telefono = telefono;
     }
 
-    public ArrayList<Cuenta> getCuentas() {
+    public List<Cuenta> getCuentas() {
         return cuentas;
     }
 
@@ -147,7 +148,7 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
     }
 
     @Override
-    public ArrayList<Cuenta> obetenerCuentas() {
+    public List<Cuenta> obetenerCuentas() {
         System.out.println("LISTA DE CUENTAS:");
         if (cuentas != null && cuentas.size()>0) {
             for(Cuenta cuenta : cuentas) {
