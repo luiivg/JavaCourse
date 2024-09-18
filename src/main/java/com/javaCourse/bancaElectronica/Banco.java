@@ -1,6 +1,8 @@
 package com.javaCourse.bancaElectronica;
 
-import java.util.ArrayList;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Banco implements ServicioClientes{
 
@@ -8,14 +10,14 @@ public class Banco implements ServicioClientes{
     private Domicilio domicilio;
     private String rfc;
     private String telefono;
-    private ArrayList<Cliente> clientes;
+    private TreeSet<Cliente> clientes;
 
     public Banco(String nombre, Domicilio domicilio, String rfc, String telefono) {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.rfc = rfc;
         this.telefono = telefono;
-        this.clientes = new ArrayList<>();
+        this.clientes = new TreeSet<>();
     }
 
     public String getNombre() {
@@ -50,11 +52,11 @@ public class Banco implements ServicioClientes{
         this.telefono = telefono;
     }
 
-    public ArrayList<Cliente> getClientes() {
+    public Set<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
+    public void setClientes(TreeSet<Cliente> clientes) {
         this.clientes = clientes;
     }
 
@@ -108,7 +110,7 @@ public class Banco implements ServicioClientes{
     }
 
     @Override
-    public ArrayList<Cliente> obtenerClientes() {
+    public TreeSet<Cliente> obtenerClientes() {
         System.out.println("LISTA DE CLIENTES:");
         if (clientes != null && clientes.size()>0) {
             for(Cliente cliente : clientes) {

@@ -1,13 +1,13 @@
 package com.javaCourse.bancaElectronica;
 
-import java.util.ArrayList;
+import java.util.TreeSet;
 
 public interface ServicioClientes {
-    public boolean agregarCliente(Cliente cliente);
-    public boolean eliminarCliente(int numeroIdentificacion);
-    public Cliente consultarCliente(int numeroIdentifia);
-    public ArrayList<Cliente> obtenerClientes();
-    public Cliente buscarClientePorRFC(String rfc);
+    boolean agregarCliente(Cliente cliente);
+    boolean eliminarCliente(int numeroIdentificacion);
+    Cliente consultarCliente(int numeroIdentifia);
+    TreeSet<Cliente> obtenerClientes();
+    Cliente buscarClientePorRFC(String rfc);
 
 
 }

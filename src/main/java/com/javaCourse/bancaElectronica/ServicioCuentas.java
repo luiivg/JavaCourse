@@ -1,11 +1,11 @@
 package com.javaCourse.bancaElectronica;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface ServicioCuentas {
-    public boolean agregarCuenta(Cuenta cuenta);
-    public boolean cancelarCuenta(int numeroCuenta);
-    public void abonarCuenta(int numeroCuenta, double abono);
-    public void retirar(int numeroCuenta, double retiro);
-    public ArrayList<Cuenta> obetenerCuentas();
+    boolean agregarCuenta(Cuenta cuenta);
+    boolean cancelarCuenta(int numeroCuenta);
+    void abonarCuenta(int numeroCuenta, double abono);
+    void retirar(int numeroCuenta, double retiro);
+    List<Cuenta> obetenerCuentas();
 }
