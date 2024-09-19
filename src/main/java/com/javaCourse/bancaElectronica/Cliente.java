@@ -1,12 +1,15 @@
 package com.javaCourse.bancaElectronica;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
+@Builder
+@AllArgsConstructor()
+@NoArgsConstructor
 public class Cliente implements ServicioCuentas, Comparable<Cliente>{
 
 
