@@ -1,5 +1,12 @@
 package com.javaCourse.bancaElectronica;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+@Data
 public class CuentaDeCheque extends Cuenta{
 
     private double costoManejoMensual;
@@ -9,10 +16,4 @@ public class CuentaDeCheque extends Cuenta{
         this.costoManejoMensual = costoManejoMensual;
     }
 
-    @Override
-    public String toString() {
-        return "CuentaDeCheque{" +
-                "costoManejoMensual=" + costoManejoMensual +
-                '}';
-    }
 }
