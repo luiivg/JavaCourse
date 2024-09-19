@@ -1,4 +1,4 @@
-**Binevenido**
+**¡BIENVENIDO!**
 
 Cada unas de las actividades/laboratorios/practicas estan realizadas en una rama feature(con su nombre respectivo y diciente, para facil revisión). 
 
