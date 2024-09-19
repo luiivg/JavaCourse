@@ -46,7 +46,9 @@ public class Main {
 
 
         /*PRACTICA 3
-        * Ejercicio de ordenamiento con  de clientes por Nombre, */
+        * Ejercicio de ordenamiento
+        * clientes ordenado por Numero
+        * cuentas ordenado por saldo */
         System.out.println("\n---------------------- EJERCICIO DE ORDENAMIENTO :D ----------------------");
 
         //Creamos lista de clientes
@@ -61,9 +63,12 @@ public class Main {
         servicioPractica3.practica3(clientes);
 
 
+        /*PRACTICA 4*/
         //CREACION DE CLIENTE CON BUILDER
         ServicioPractica4 servicioPractica4 = new ServicioPractica4();
         servicioPractica4.practica4();
+
+
 
     }
 }
