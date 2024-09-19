@@ -1,5 +1,7 @@
 package com.javaCourse.bancaElectronica;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -163,9 +165,10 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
         }
     }
 
+    //ordena clientes por numero
     @Override
-    public int compareTo(Cliente cliente) {
-        return Integer.compare(cliente.getNumero(), this.getNumero());
+    public int compareTo(Cliente c) {
+        return Integer.compare(this.numero,c.getNumero());
     }
 
     @Override
