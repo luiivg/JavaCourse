@@ -1,9 +1,12 @@
 package com.javaCourse.bancaElectronica;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Data
 public class Cliente implements ServicioCuentas, Comparable<Cliente>{
 
 
@@ -24,63 +27,6 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
         this.cuentas = new ArrayList<>();
         this.fechaNacimiento = fechaNacimiento;
     }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Domicilio getDomicilio() {
-        return domicilio;
-    }
-
-    public void setDomicilio(Domicilio domicilio) {
-        this.domicilio = domicilio;
-    }
-
-    public String getRfc() {
-        return rfc;
-    }
-
-    public void setRfc(String rfc) {
-        this.rfc = rfc;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public List<Cuenta> getCuentas() {
-        return cuentas;
-    }
-
-    public void setCuentas(ArrayList<Cuenta> cuentas) {
-        this.cuentas = cuentas;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
 
     @Override
     public boolean agregarCuenta(Cuenta cuenta) {
@@ -163,22 +109,10 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
         }
     }
 
+    //ordena clientes por numero
     @Override
-    public int compareTo(Cliente cliente) {
-        return Integer.compare(cliente.getNumero(), this.getNumero());
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "numero=" + numero +
-                ", nombre='" + nombre + '\'' +
-                ", domicilio=" + domicilio +
-                ", rfc='" + rfc + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", cuentas=" + cuentas +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
-                '}';
+    public int compareTo(Cliente c) {
+        return Integer.compare(this.numero,c.getNumero());
     }
 
 }

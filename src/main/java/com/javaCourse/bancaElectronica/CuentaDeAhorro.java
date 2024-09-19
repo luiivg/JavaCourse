@@ -1,5 +1,12 @@
 package com.javaCourse.bancaElectronica;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+@Data
 public class CuentaDeAhorro extends Cuenta {
 
     private double tasaInteresMensual;
@@ -9,21 +16,8 @@ public class CuentaDeAhorro extends Cuenta {
         this.tasaInteresMensual = tasaInteresMensual;
     }
 
-    public double getTasaInteresMensual() {
-        return tasaInteresMensual;
-    }
-
-    public void setTasaInteresMensual(double tasaInteresMensual) {
-        this.tasaInteresMensual = tasaInteresMensual;
-    }
     public double calcularInterses(){
         return 0;
     }
 
-    @Override
-    public String toString() {
-        return "CuentaDeAhorro{" +
-                "tasaInteresMensual=" + tasaInteresMensual +
-                '}';
-    }
 }

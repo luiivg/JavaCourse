@@ -1,5 +1,9 @@
 package com.javaCourse.bancaElectronica;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -22,7 +26,7 @@ public class Main {
 
         CuentaDeAhorro cuentaDeAhorro = new CuentaDeAhorro(1001,"2024/09/13",150.000,
                 null, 1.5);
-        CuentaDeAhorro cuentaDeAhorro1 = new CuentaDeAhorro(1002,"2024/09/13",150.000,
+        CuentaDeAhorro cuentaDeAhorro1 = new CuentaDeAhorro(1002,"2024/09/13",15.000,
                 null, 1.5);
 
 
@@ -130,6 +134,26 @@ public class Main {
         //Realizar retiros a cuenta que no existe
         System.out.println("--------------------Retirar de cuentas Error-------------------");
         cliente1.retirar(3002, 500);
+
+
+        System.out.println("\n---------------------- EJERCICIO DE ORDENAMIENTO :D ----------------------");
+        //Ordenar clientes por nombre
+        List<Cliente> clientes =  new ArrayList<>();
+        clientes.add(cliente1);
+        clientes.add(cliente4);
+        clientes.add(cliente3);
+        clientes.add(cliente2);
+
+        Collections.sort(clientes); //ordeno clientes basados en el metodo creado en la clase cliente : compareTo
+
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+            Collections.sort(cliente.getCuentas());
+            for(Cuenta cuentasPorCliente : cliente.getCuentas()) {
+                System.out.println("\t" + cuentasPorCliente);
+            }
+        }
+
 
 
     }
