@@ -1,4 +1,4 @@
-package com.javaCourse;
+package com.javaCourse.interfacesFuncionales;
 
 public class InterfacesFuncionales  {
     public static void main(String[] args) {
