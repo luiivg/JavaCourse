@@ -4,6 +4,9 @@ import java.util.function.*;
 
 public class Indoduccion {
     /*
+
+    PRACTICA 6
+
     Reglas de las Interfaces Funcionales
         * Método Abstracto Único: Una interfaz funcional debe tener exactamente un método abstracto. Esto permite que
              se pueda implementar mediante una expresión lambda.
