@@ -2,6 +2,10 @@ package com.javaCourse.interfacesFuncionales;
 
 public class InterfacesFuncionales  {
     public static void main(String[] args) {
+
+        /*
+         * PRACTICA 5
+         */
         /*se implementa el método metodo, a travez de instanciar la funcion interfaz1
         donde:
         = (a,b,c) -> son los parametros de entrada
