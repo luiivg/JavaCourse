@@ -42,7 +42,7 @@ public class ServicioPractica7{
         cliente4.obtenerCuentas();
 
         //Agregar Cliente
-        System.out.println("----------------------Agregar Cuentas Ok--------------------");
+        System.out.println("---------------------Agregar Cuentas Ok--------------------");
         cliente1.agregarCuenta(cuentaDeAhorro);
         //Prueba que una cuenta la puede tener mas de un cliente
         cliente3.agregarCuenta(cuentaDeAhorro);
