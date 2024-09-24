@@ -1,8 +1,5 @@
 package com.javaCourse.bancaElectronicaAdvance;
 
-import com.javaCourse.bancaElectronica.CuentaDeAhorro;
-import com.javaCourse.bancaElectronica.CuentaDeCheque;
-
 
 public class ServicioPractica7{
 

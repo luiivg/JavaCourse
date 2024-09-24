@@ -1,12 +1,11 @@
 package com.javaCourse.bancaElectronicaAdvance;
 
-import com.javaCourse.bancaElectronica.Cuenta;
-import com.javaCourse.bancaElectronica.CuentaDeAhorro;
-import com.javaCourse.bancaElectronica.CuentaDeCheque;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class ServicioPractica8 {
     int numeroCliente;
     String tipoCuenta;
     int numeroCuenta;
-    String fechaApertura;
+    LocalDate fechaApertura;
     double saldo;
     double tasaInteresMensual;
     double costoManejoMensual;
@@ -39,7 +38,7 @@ public class ServicioPractica8 {
         for(String cuentaArchivo: cuentasArchivo){
             validarDataArchivo(cuentaArchivo);
 
-            Cuenta cuenta = validarTipoCuenta(tipoCuenta,numeroCuenta,fechaApertura,saldo,tasaInteresMensual,
+            Cuenta cuenta = validarTipoCuenta(tipoCuenta,numeroCuenta, fechaApertura,saldo,tasaInteresMensual,
                     costoManejoMensual);
 
             switch(numeroCliente){
@@ -85,7 +84,12 @@ public class ServicioPractica8 {
 
         numeroCuenta = Integer.parseInt(infoCuenta.trim().substring(3));
 
-        fechaApertura = data[1];
+        //en caso de que la fecha llegue en formato diferente a dd/MM/yyyy
+        if(validarFormatoFecha(data[1].trim())){
+            fechaApertura = LocalDate.parse(data[1].trim(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        }else{
+            fechaApertura = LocalDate.parse(data[1].trim(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        }
         saldo = Double.parseDouble(data[2]);
         tasaInteresMensual = Double.parseDouble(data[3]);
         costoManejoMensual = Double.parseDouble(data[3]);
@@ -95,8 +99,8 @@ public class ServicioPractica8 {
     CA crea una Cuenta de Ahorros
     CC crea una cuenta de Cheque
      */
-    private Cuenta validarTipoCuenta(String tipoCuenta,int numeroCuenta,String fechaApertura,double saldo,
-                                     double tasaInteresMensual,double costoManejoMensual){
+    private Cuenta validarTipoCuenta(String tipoCuenta, int numeroCuenta, LocalDate fechaApertura, double saldo,
+                                     double tasaInteresMensual, double costoManejoMensual){
         if(tipoCuenta.contains("CA")){
             return(new CuentaDeAhorro(numeroCuenta,fechaApertura,saldo,null,tasaInteresMensual));
         }else{
@@ -114,6 +118,16 @@ public class ServicioPractica8 {
                     " No cumple con la cantidad de cuentas que debe tener. Cantidad de cuentas: " +
                     clienteConCuentas.getCuentas().size());
         }
+    }
+
+    private boolean validarFormatoFecha(String fechastr){
+        try{
+            LocalDate.parse(fechastr,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            return true;
+        }catch (DateTimeParseException e){
+            return false;
+        }
+
     }
 }
 

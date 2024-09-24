@@ -1,6 +1,5 @@
 package com.javaCourse.bancaElectronicaAdvance;
 
-import com.javaCourse.bancaElectronica.Cuenta;
 
 import java.util.List;
 

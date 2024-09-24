@@ -1,15 +1,15 @@
 package com.javaCourse.bancaElectronicaAdvance;
 
 
-import com.javaCourse.bancaElectronica.Cuenta;
 import com.javaCourse.bancaElectronica.Domicilio;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,8 +25,10 @@ public class Cliente implements ServicioCuentas {
     private String rfc;
     private String telefono;
     private List<Cuenta> cuentas;
-    private String fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
+
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono,  String fechaNacimiento) {
         this.numero = numero;
         this.nombre = nombre;
@@ -34,7 +36,7 @@ public class Cliente implements ServicioCuentas {
         this.rfc = rfc;
         this.telefono = telefono;
         this.cuentas = new ArrayList<>();
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechaNacimiento = LocalDate.parse(fechaNacimiento, formatter);
     }
 
     @Override
@@ -55,7 +57,7 @@ public class Cliente implements ServicioCuentas {
                 .filter(e -> e.getNumero() ==numeroCuenta)
                 .findFirst();
         if(c.isPresent()) {
-            c.get().setFechaCancelacion(new Date().toString());
+            c.get().setFechaCancelacion(LocalDate.now());
             System.out.println("Cuenta cancelada: " + c.get());
             return true;
         }else{
