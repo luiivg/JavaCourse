@@ -14,3 +14,7 @@ La compilacion de todas las practicas estara en la rama Master
 |Bonus| -Implementación de Lombok -> Refactorización de Código |
 |Cápitulo 4 - Práctica 4 | - Implementacion metodos de interfaz en las diferentes clases. |
 |Cápitulo 5 - Práctica 5 | - Creación e implementación de Interfaces Funcionales anidadas |
+
+
+Ejercicio de archivos Cap 8:
+![img.png](img.png)
